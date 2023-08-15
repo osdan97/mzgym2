@@ -1,6 +1,6 @@
 package com.idat.mzgym.model;
 
-import com.idat.mzgym.util.enums.TransactionState;
+/*import com.idat.mzgym.util.enums.TransactionState;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -57,3 +57,5 @@ public class Orders {
         this.transactionState = TransactionState.valueOf(TransactionState.ON_HOLD.getValue());
     }
 }
+
+ */

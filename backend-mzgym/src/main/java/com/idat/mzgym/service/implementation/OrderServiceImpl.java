@@ -1,6 +1,6 @@
 package com.idat.mzgym.service.implementation;
 
-import com.idat.mzgym.dto.OrderRegisterDto;
+/*import com.idat.mzgym.dto.OrderRegisterDto;
 import com.idat.mzgym.model.Memberships;
 import com.idat.mzgym.model.Orders;
 import com.idat.mzgym.repository.OrderRepository;
@@ -47,3 +47,4 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 }
+*/
