@@ -1,6 +1,6 @@
 package com.idat.mzgym.controller;
 
-import com.idat.mzgym.dto.GymDto;
+/*import com.idat.mzgym.dto.GymDto;
 import com.idat.mzgym.dto.LocationRegisterDto;
 import com.idat.mzgym.dto.Mensaje;
 import com.idat.mzgym.model.Gym;
@@ -69,4 +69,4 @@ public class LocationController {
         locationService.deleteLocation(id);
         return new ResponseEntity(new Mensaje("location deleted successfully"), HttpStatus.OK);
     }
-}
+}*/

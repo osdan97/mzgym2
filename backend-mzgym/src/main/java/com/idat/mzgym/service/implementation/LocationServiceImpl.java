@@ -1,6 +1,6 @@
 package com.idat.mzgym.service.implementation;
 
-import com.idat.mzgym.dto.LocationRegisterDto;
+/*import com.idat.mzgym.dto.LocationRegisterDto;
 import com.idat.mzgym.model.Location;
 import com.idat.mzgym.repository.LocationRepository;
 import com.idat.mzgym.service.LocationService;
@@ -64,3 +64,4 @@ public class LocationServiceImpl implements LocationService {
         return locationRepository.findById(id);
     }
 }
+*/
