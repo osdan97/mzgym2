@@ -1,6 +1,6 @@
 package com.idat.mzgym.service;
 
-import com.idat.mzgym.dto.OrderRegisterDto;
+/*import com.idat.mzgym.dto.OrderRegisterDto;
 import com.idat.mzgym.model.Orders;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,3 +18,4 @@ public interface OrderService {
     @Transactional
     List<Orders> getOrdersByAccountUuid(String accountUuid);
 }
+*/
