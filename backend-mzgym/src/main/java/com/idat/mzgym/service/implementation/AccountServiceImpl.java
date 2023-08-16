@@ -32,8 +32,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
 
-    @Autowired
-    private EmailService emailService;
+
     @Autowired
     private UserRepository userRepository;
 
