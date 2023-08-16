@@ -9,7 +9,7 @@ import com.idat.mzgym.repository.CustomerRepository;
 import com.idat.mzgym.repository.UserRepository;
 
 import com.idat.mzgym.service.AccountService;
-import com.idat.mzgym.service.EmailService;
+
 import com.idat.mzgym.util.enums.Role;
 import org.modelmapper.internal.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
