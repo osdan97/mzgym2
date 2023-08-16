@@ -30,12 +30,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
-    @Value("${verification.base-url}")
-    protected String baseUrl;
+
     @Autowired
     private JavaMailSender javaMailSender;
-    @Value("${spring.mail.username}")
-    private String emailFrom;
+
     @Autowired
     private EmailService emailService;
     @Autowired
