@@ -14,7 +14,7 @@ import com.idat.mzgym.util.enums.Role;
 import org.modelmapper.internal.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.javamail.JavaMailSender;
+
 
 
 
@@ -31,8 +31,6 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    @Autowired
-    private JavaMailSender javaMailSender;
 
     @Autowired
     private EmailService emailService;
