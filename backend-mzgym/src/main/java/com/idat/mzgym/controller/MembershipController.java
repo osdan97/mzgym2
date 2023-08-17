@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/membership")
+@CrossOrigin(origins="*")
 public class MembershipController {
     @Autowired
     MembershipService membershipService;

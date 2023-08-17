@@ -23,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("api/authentication")
+@CrossOrigin(origins="*")
 public class AuthenticationController {
 
 

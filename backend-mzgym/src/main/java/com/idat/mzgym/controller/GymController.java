@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/gym")
+@CrossOrigin(origins="*")
 public class GymController {
     @Autowired
     GymService gymService;
