@@ -1,4 +1,4 @@
-package com.nocountry.ecommerce.config;
+package com.idat.mzgym.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
