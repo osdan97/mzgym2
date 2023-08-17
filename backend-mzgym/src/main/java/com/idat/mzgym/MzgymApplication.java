@@ -9,7 +9,15 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class MzgymApplication {
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer(){
 
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*");
+            }
+        };}
 
     public static void main(String[] args) {
 
