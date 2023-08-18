@@ -18,10 +18,7 @@ com\idat\mzgym\service\AccountService.class
 com\idat\mzgym\service\implementation\AccountServiceImpl.class
 com\idat\mzgym\dto\Mensaje.class
 com\idat\mzgym\service\MembershipService.class
-<<<<<<< HEAD
-=======
 com\idat\mzgym\config\CrossOriginConfig.class
->>>>>>> 395247f4b324807c9f4080ca57786c68a5414b79
 com\idat\mzgym\MzgymApplication.class
 com\idat\mzgym\controller\CustomerController.class
 com\idat\mzgym\dto\CustomerUpdate.class
