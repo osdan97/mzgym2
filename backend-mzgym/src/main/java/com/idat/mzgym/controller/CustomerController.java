@@ -1,6 +1,5 @@
 package com.idat.mzgym.controller;
 
-
 import com.idat.mzgym.dto.CustomerUpdate;
 import com.idat.mzgym.dto.Mensaje;
 import com.idat.mzgym.model.Customers;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/customer")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class CustomerController {
     @Autowired
     private AccountService accountService;
@@ -23,22 +22,29 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-
-
     @GetMapping("/list")
-    public ResponseEntity<?>listCustomer(){
-        List<Customers> list=customerRepository.findAll();
-        return new ResponseEntity(list,HttpStatus.OK);
+    public ResponseEntity<?> listCustomer() {
+        List<Customers> list = customerRepository.findAll();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<?>customerUpdate(@PathVariable String id, @RequestBody CustomerUpdate customerUp){
-        Customers customer=customerRepository.findByAccountUuid(id).get();
-        if(!customerRepository.existsById(id)){
+    public ResponseEntity<?> customerUpdate(@PathVariable String id, @RequestBody CustomerUpdate customerUp) {
+        Customers customer = customerRepository.findByAccountUuid(id).get();
+        if (!customerRepository.existsById(id)) {
             return new ResponseEntity(new Mensaje(" Customer does not exist"), HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity(accountService.updateCustomer(id,customerUp),HttpStatus.OK);
+        return new ResponseEntity(accountService.updateCustomer(id, customerUp), HttpStatus.OK);
     }
 
+    @GetMapping("/findbyid/{id}")
+    public ResponseEntity<?> customerFindById(@PathVariable String id) {
+        Customers customer = customerRepository.findByAccountUuid(id).get();
+        if (!customerRepository.existsById(id)) {
+            return new ResponseEntity(new Mensaje(" Customer does not exist"), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(customer, HttpStatus.OK);
+    }
 
 }
