@@ -78,49 +78,45 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public CustomerRegisterResponseUuid createCustomer2(Customers customers){
-        CustomerRegistration customerRegistration = new CustomerRegistration();
-        int anoActual = LocalDate.now().getYear();
-        String numeracion = obtenerNumeracionAutomatica();
+    public CustomerUpdate updateCustomer(String id,CustomerUpdate customerUpdate){
+        if(!customerRepository.existsById(id)){
+            throw new IllegalStateException("Customer does not exists");
+        }
+        Customers existCustomer=customerRepository.findByAccountUuid(id).get();
+        existCustomer.setName(customerUpdate.getName());
+        existCustomer.setLastName(customerUpdate.getLastName());
+        existCustomer.setDocumentType(customerUpdate.getDocumentType());
+        existCustomer.setDocumentNumber(customerUpdate.getDocumentNumber());
+        existCustomer.setAddress(customerUpdate.getAddress());
 
-        String email = customers.getEmail();
-        customerRegistration.setEmail(email);
-        String password=customers.getPassword();
+        CustomerUpdate updateCustomer =new CustomerUpdate();
+        updateCustomer.setName(customerUpdate.getName());
+        updateCustomer.setLastName(customerUpdate.getLastName());
+        updateCustomer.setDocumentType(customerUpdate.getDocumentType());
+        updateCustomer.setDocumentNumber(customerUpdate.getDocumentNumber());
+        updateCustomer.setAddress(customerUpdate.getAddress());
 
-        customerRegistration.setPassword(password);
-        String name = customers.getName();
-        String lastName = customers.getLastName();
-        String fullName = name + " " + lastName;
-        customerRegistration.setFullName(fullName);
-        String verificationCode = RandomString.make(64);
-        customerRegistration.setVerificationCode(verificationCode);
+        if(!(customerUpdate.getEmail()==null || customerUpdate.getEmail().isEmpty())){
+            existCustomer.setEmail(customerUpdate.getEmail());
+            updateCustomer.setEmail(customerUpdate.getEmail());
 
-
-
-        Customers saveCustomer = new Customers(email, password);
-        saveCustomer.setEmail(email);
-        saveCustomer.setPassword(password);
-        saveCustomer.setName(name);
-        saveCustomer.setLastName(lastName);
-        saveCustomer.setMembershipState("ON_HOLD");
-        String customerNumber = anoActual + "-" + numeracion;
-        saveCustomer.setRol(Role.USER);
-        saveCustomer.setNumber(customerNumber);
-        saveCustomer.setVerificationCode(verificationCode);
-        String uuid=saveCustomer.getAccountUuid();
-        customerRegistration.setToken("*");
-
-        CustomerRegisterResponseUuid dto=new CustomerRegisterResponseUuid();
-        dto.setUuid(uuid);
-        dto.setEmail(email);
-        dto.setName(name);
-        dto.setLastname(lastName);
+        }
+        if(!(customerUpdate.getPassword()==null || customerUpdate.getPassword().isEmpty())){
+            existCustomer.setPassword(customerUpdate.getPassword());
+            updateCustomer.setPassword(customerUpdate.getPassword());
+        }
+        if(!(customerUpdate.getMembershipState()==null || customerUpdate.getMembershipState().isEmpty())){
+            existCustomer.setMembershipState(customerUpdate.getMembershipState());
+            updateCustomer.setMembershipState(customerUpdate.getMembershipState());
+        }
+        updateCustomer.setEmail(existCustomer.getEmail());
+        updateCustomer.setPassword(existCustomer.getPassword());
+        updateCustomer.setMembershipState(existCustomer.getMembershipState());
 
 
+        customerRepository.save(existCustomer);
 
-        customerRepository.save(saveCustomer);
-
-        return dto;
+        return updateCustomer;
     }
 
     @Override

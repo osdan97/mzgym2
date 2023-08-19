@@ -1,6 +1,7 @@
 package com.idat.mzgym.controller;
 
 
+import com.idat.mzgym.dto.CustomerUpdate;
 import com.idat.mzgym.dto.Mensaje;
 import com.idat.mzgym.model.Customers;
 import com.idat.mzgym.repository.CustomerRepository;
@@ -29,12 +30,15 @@ public class CustomerController {
         List<Customers> list=customerRepository.findAll();
         return new ResponseEntity(list,HttpStatus.OK);
     }
-    @GetMapping("/findbyid/{id}")
-    public ResponseEntity<?>customerFindById(@PathVariable String id){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?>customerUpdate(@PathVariable String id, @RequestBody CustomerUpdate customerUp){
         Customers customer=customerRepository.findByAccountUuid(id).get();
         if(!customerRepository.existsById(id)){
             return new ResponseEntity(new Mensaje(" Customer does not exist"), HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(customer,HttpStatus.OK);
+
+        return new ResponseEntity(accountService.updateCustomer(id,customerUp),HttpStatus.OK);
     }
+
+
 }

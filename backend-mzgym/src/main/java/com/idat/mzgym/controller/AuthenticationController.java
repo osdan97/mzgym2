@@ -93,7 +93,7 @@ public class AuthenticationController {
         if (accountService.findByEmail(customer.getEmail()).isPresent()) {
             return new ResponseEntity<>("This account already exists", HttpStatus.CONFLICT);
         } else {
-            return new ResponseEntity<>(accountService.createCustomer2(customer), HttpStatus.CREATED);
+            return new ResponseEntity<>(accountService.createCustomer3(customer), HttpStatus.CREATED);
         }
     }
 

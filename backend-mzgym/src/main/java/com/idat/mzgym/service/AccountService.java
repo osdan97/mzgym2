@@ -16,9 +16,10 @@ public interface AccountService {
 
    // UserRegistrationDto createUser(Users user);
 
-    CustomerRegisterResponseUuid createCustomer2(Customers customers);
+
     CustomerRegisterResponseUuid createCustomer3(Customers customers);
 
+    CustomerUpdate updateCustomer(String id,CustomerUpdate customerUpdate);
     Optional<Account> findByEmail(String email);
 
     //abstract Optional<Account> findByTokenPassword(String tokenPassword);

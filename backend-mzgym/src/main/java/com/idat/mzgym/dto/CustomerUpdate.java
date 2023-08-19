@@ -14,9 +14,12 @@ import java.util.List;
 
 public class CustomerUpdate {
     private String name;
+    private String email;
+    private String password;
     private String lastName;
     private String documentType;
     private Long documentNumber;
     private String address;
+    private String membershipState;
 
 }
