@@ -53,6 +53,9 @@ public class AuthenticationController {
         }
     }
 
+
+
+
     @PostMapping("/registeruuid")
     public ResponseEntity<?>registerUuid(@RequestBody Customers customer){
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {

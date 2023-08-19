@@ -2,6 +2,7 @@ package com.idat.mzgym.controller;
 
 import com.idat.mzgym.dto.MembershipDto;
 import com.idat.mzgym.dto.Mensaje;
+import com.idat.mzgym.model.Gym;
 import com.idat.mzgym.model.Memberships;
 import com.idat.mzgym.repository.MembershipRepository;
 import com.idat.mzgym.service.MembershipService;
@@ -29,6 +30,14 @@ public class MembershipController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
+    @GetMapping("/findbyid/{id}")
+    public ResponseEntity<?>membershipFindById(@PathVariable String id){
+        Memberships memberships=membershipService.getOne(id).get();
+        if(!membershipRepository.existsById(id)){
+            return new ResponseEntity(new Mensaje(" Membeship does not exist"), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(memberships,HttpStatus.OK);
+    }
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody MembershipDto membershipDto) {
 

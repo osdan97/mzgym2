@@ -76,8 +76,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
+
     @Override
-    public String createCustomer2(Customers customers){
+    public CustomerRegisterResponseUuid createCustomer2(Customers customers){
         CustomerRegistration customerRegistration = new CustomerRegistration();
         int anoActual = LocalDate.now().getYear();
         String numeracion = obtenerNumeracionAutomatica();
@@ -95,6 +96,7 @@ public class AccountServiceImpl implements AccountService {
         customerRegistration.setVerificationCode(verificationCode);
 
 
+
         Customers saveCustomer = new Customers(email, password);
         saveCustomer.setEmail(email);
         saveCustomer.setPassword(password);
@@ -106,13 +108,19 @@ public class AccountServiceImpl implements AccountService {
         saveCustomer.setNumber(customerNumber);
         saveCustomer.setVerificationCode(verificationCode);
         String uuid=saveCustomer.getAccountUuid();
-
         customerRegistration.setToken("*");
+
+        CustomerRegisterResponseUuid dto=new CustomerRegisterResponseUuid();
+        dto.setUuid(uuid);
+        dto.setEmail(email);
+        dto.setName(name);
+        dto.setLastname(lastName);
+
 
 
         customerRepository.save(saveCustomer);
 
-        return uuid;
+        return dto;
     }
 
     @Override

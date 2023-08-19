@@ -1,6 +1,7 @@
 package com.idat.mzgym.controller;
 
 
+import com.idat.mzgym.dto.Mensaje;
 import com.idat.mzgym.model.Customers;
 import com.idat.mzgym.repository.CustomerRepository;
 import com.idat.mzgym.service.AccountService;
@@ -31,6 +32,9 @@ public class CustomerController {
     @GetMapping("/findbyid/{id}")
     public ResponseEntity<?>customerFindById(@PathVariable String id){
         Customers customer=customerRepository.findByAccountUuid(id).get();
+        if(!customerRepository.existsById(id)){
+            return new ResponseEntity(new Mensaje(" Customer does not exist"), HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity(customer,HttpStatus.OK);
     }
 }

@@ -3,6 +3,7 @@ package com.idat.mzgym.controller;
 import com.idat.mzgym.dto.GymDto;
 import com.idat.mzgym.dto.MembershipDto;
 import com.idat.mzgym.dto.Mensaje;
+import com.idat.mzgym.model.Customers;
 import com.idat.mzgym.model.Gym;
 import com.idat.mzgym.model.Memberships;
 import com.idat.mzgym.repository.GymRepository;
@@ -31,6 +32,14 @@ public class GymController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
+    @GetMapping("/findbyid/{id}")
+    public ResponseEntity<?>gymFindById(@PathVariable String id){
+        Gym gym=gymService.getOne(id).get();
+        if(!gymRepository.existsById(id)){
+            return new ResponseEntity(new Mensaje(" Gym does not exist"), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(gym,HttpStatus.OK);
+    }
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody GymDto gymDto) {
             gymService.createGym(gymDto);

@@ -55,7 +55,7 @@ public class LocationController {
         return new ResponseEntity(new Mensaje("location updated successfully"), HttpStatus.OK);
     }
 
-    @GetMapping("/location/{id}")
+    @GetMapping("/findbyid/{id}")
     public ResponseEntity<?>findById(@PathVariable("id") String id){
         if (!locationRepository.existsById(id))
             return new ResponseEntity(new Mensaje("location does not exist"), HttpStatus.NOT_FOUND);
