@@ -17,6 +17,7 @@ public interface AccountService {
    // UserRegistrationDto createUser(Users user);
 
     CustomerRegisterResponseUuid createCustomer2(Customers customers);
+    CustomerRegisterResponseUuid createCustomer3(Customers customers);
 
     Optional<Account> findByEmail(String email);
 

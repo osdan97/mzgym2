@@ -53,11 +53,31 @@ public class AuthenticationController {
         }
     }
 
+    @PostMapping("register")
+    public ResponseEntity<?> register(@RequestBody Customers customer){
+        if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
+            return new ResponseEntity<>("Email can't be empty", HttpStatus.BAD_REQUEST);
+        }
+        if (customer.getPassword() == null || customer.getPassword().isEmpty()) {
+            return new ResponseEntity<>("Password can't be empty", HttpStatus.BAD_REQUEST);
+        }
+        if (customer.getName() == null || customer.getName().isEmpty()) {
+            return new ResponseEntity<>("Name can't be empty", HttpStatus.BAD_REQUEST);
+        }
+        if (customer.getLastName() == null || customer.getLastName().isEmpty()) {
+            return new ResponseEntity<>("Lastname can't be empty", HttpStatus.BAD_REQUEST);
+        }
+        if (accountService.findByEmail(customer.getEmail()).isPresent()) {
+            return new ResponseEntity<>("This account already exists", HttpStatus.CONFLICT);
+        } else {
+            return new ResponseEntity<>(accountService.createCustomer3(customer), HttpStatus.CREATED);
+        }
+    }
 
 
 
     @PostMapping("/registeruuid")
-    public ResponseEntity<?>registerUuid(@RequestBody Customers customer){
+    public ResponseEntity<?>registerWithUuid(@RequestBody Customers customer){
         if (customer.getEmail() == null || customer.getEmail().isEmpty()) {
             return new ResponseEntity<>("Email can't be empty", HttpStatus.BAD_REQUEST);
         }
